@@ -20,9 +20,15 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: "./index.html",
-        title: "Webpack Plugin",
+        title: "JATE",
+      }),
+      new InjectManifest({
+        swSrc: "./src-sw.js",
+        swDest: "src-sw.js",
       }),
       new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
         name: "Just Another Text Editor",
         short_name: "JATE",
         description: "A text editting application",
@@ -31,10 +37,6 @@ module.exports = () => {
         start_url: "./",
         publicPath: "./",
         icons: [],
-      }),
-      new InjectManifest({
-        swSrc: "./src-sw.js",
-        swDest: "service-worker.js",
       }),
     ],
 
@@ -55,6 +57,7 @@ module.exports = () => {
             loader: "babel-loader",
             options: {
               presets: ["@babel/preset-env"],
+              plugins: ["@babel/plugin-transform-runtime"],
             },
           },
         },

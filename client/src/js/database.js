@@ -8,7 +8,8 @@ const initdb = async () =>
         console.log("jate database already exists");
         return;
       }
-      db.createObjectStore("jate", { keyPath: "id", autoIncrement: true });
+      // db.createObjectStore("jate", { keyPath: "id", autoIncrement: true });
+      db.createObjectStore("jate", { keyPath: "id" });
       console.log("jate database created");
     },
   });
@@ -22,12 +23,12 @@ export const putDb = async (content) => {
   // open up the desired object store
   const store = tx.objectStore("jate");
 
-  // using .add() method to POST contents
-  const request = store.add({ content });
+  // using .put() method to update contents
+  const request = store.put({ content: content, id: 1 });
 
   // request confirmation
   const result = await request;
-  console.log(result);
+  console.log("Data saved to the database", result);
 };
 
 // TODO: Add logic for a method that gets all the content from the database
@@ -39,11 +40,11 @@ export const getDb = async () => {
   const store = tx.objectStore("jate");
 
   // use .getAll() to retrieve all data
-  const request = store.put({ content });
+  const request = store.getAll();
 
   // request confirmation
   const result = await request;
-  console.log(result);
+  console.log("getDB result:", result);
   return result;
 };
 
