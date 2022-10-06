@@ -4,6 +4,8 @@
 
 This challenge focused on producing a Progressive Web Application (PWA). The application itself is a text editor that utilizes cache, localStorage, and indexDB to store vital information. Some specific topics learned during the production include service workers, indexdb, and webpack plugins. This project utilized the client-server folder structure for organization and exports a 'dist' build for production.
 
+![A screenshot showing the application's user interface and application download pop-up](./client/src/images/applicationView.jpg)
+
 ---
 
 ## Table of Contents
