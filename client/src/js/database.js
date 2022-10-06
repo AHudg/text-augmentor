@@ -44,7 +44,6 @@ export const getDb = async () => {
 
   // request confirmation
   const result = await request;
-  console.log("getDB result:", result);
   return result;
 };
 
